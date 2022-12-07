@@ -2,9 +2,8 @@
 #How many total Calories is that Elf carrying? TOP3
 
 
-
 def openFile():
-    return open("01AInput", "r")
+    return open("01Input", "r")
 
 
 def forLine(file):

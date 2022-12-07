@@ -17,29 +17,35 @@ def forLine(file):
 
 def f(x):
     return {
-        'X': 1,
-        'Y': 2,
-        'Z': 3
+        'X': 0,
+        'Y': 3,
+        'Z': 6
     }[x]
 
 
 def checkIfWon(opponent, me):
     ret = 0
     if opponent == 'A':
-        if me == 'Y':
-            ret += 6
-        elif me == 'X':
+        if me == 'X':
             ret += 3
-    elif opponent == 'B':
-        if me == 'Z':
-            ret += 6
         elif me == 'Y':
+            ret += 1
+        elif me == 'Z':
+            ret += 2
+    elif opponent == 'B':
+        if me == 'X':
+            ret += 1
+        elif me == 'Y':
+            ret += 2
+        elif me == 'Z':
             ret += 3
     elif opponent == 'C':
         if me == 'X':
-            ret += 6
-        elif me == 'Z':
+            ret += 2
+        elif me == 'Y':
             ret += 3
+        elif me == 'Z':
+            ret += 1
 
     ret += f(me)
     return ret
