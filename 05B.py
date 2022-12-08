@@ -26,9 +26,15 @@ def forLine(file):
         elif cratePositionsLoaded:
             # Moving the crates
             orders = line.rstrip().split(" ")
-            for i in range(0, int(orders[1])):
-                cratePositions[int(orders[5])-1].append(cratePositions[int(orders[3])-1][-1])
-                cratePositions[int(orders[3])-1].pop()
+            # Where to start?
+            stackFromLen = len(cratePositions[int(orders[3]) - 1])
+            toBeMoved = int(orders[1]) if int(orders[1]) <= stackFromLen else stackFromLen
+            # Moving
+            for i in range(stackFromLen - toBeMoved, stackFromLen):
+                cratePositions[int(orders[5])-1].append(cratePositions[int(orders[3])-1][i])
+            # Deleting
+            for i in range(stackFromLen - toBeMoved, stackFromLen):
+                cratePositions[int(orders[3]) - 1].pop()
 
     # Final
     for stack in range(0, 9):
